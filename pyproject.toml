@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=61.0", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "project_backend"
+description = "ML Backend Project Template"
+authors = [ {name="Guillaume Alleon", email="guillaume.alleon@gmail.com"}]
+keywords = ["api", "machine learning"]
+classifiers = [
+    "Intended Audience :: Developers",
+    "Development Status :: 4 - Beta",
+    "Topic :: Software Development",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Topic :: Software Development",
+    "Topic :: Scientific/Engineering",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "pandas",
+    "scikit-learn",
+    "scipy",
+    "seaborn",
+    "torch[cpu]",
+]
+dynamic = ["version", "readme"]
+#urls = [{source="https://github.com/galleon/anomaly_detection"}]
+
+[tool.distutils.bdist_wheel]
+universal = true
+
+[project.optional-dependencies]
+test = ["pytest", "pytest-cov",]
+
+[tool.setuptools.dynamic]
+version = {attr = "setuptools_scm.get_version"}
+readme = {file = "README.md"}
+
+[tool.setuptools_scm]
+local_scheme = 'no-local-version'
+version_scheme = 'post-release'
